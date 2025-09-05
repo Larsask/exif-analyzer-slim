@@ -1,6 +1,4 @@
 import { NextResponse } from 'next/server';
-import path from 'path';
-import fs from 'fs';
 
 export const runtime = 'nodejs';
 
@@ -8,17 +6,17 @@ export async function GET(_req: Request, { params }: { params: { id: string; ass
   try {
     const id = decodeURIComponent(params.id);
     const asset = decodeURIComponent(params.asset);
-    const comboRoot = path.resolve(process.cwd(), '..', 'combo-pack-advanced');
-    const entries = fs.readdirSync(comboRoot);
-    const baseFile = entries.find((e) => e.startsWith(`${id}_`));
-    if (!baseFile) return new Response('Not found', { status: 404 });
-    const analysisFolder = path.join(comboRoot, `analysis_${path.parse(baseFile).name}`);
-    const filePath = path.join(analysisFolder, asset);
-    if (!fs.existsSync(filePath)) return new Response('Not found', { status: 404 });
-    const data = fs.readFileSync(filePath);
-    return new Response(data, { status: 200 });
+    
+    // For now, return a mock response since we don't have the analyzer tools in Vercel
+    // In production, this would proxy to an external analyzer service
+    return NextResponse.json({ 
+      error: 'Asset download not available in demo mode',
+      note: 'In production, this would serve files from the external analyzer service',
+      id,
+      asset
+    }, { status: 404 });
   } catch (e) {
     console.error('download: unexpected', e);
-    return new Response('Unexpected error', { status: 500 });
+    return NextResponse.json({ error: 'Unexpected error' }, { status: 500 });
   }
 }
