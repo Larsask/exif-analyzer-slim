@@ -1,0 +1,25 @@
+# Node
+node_modules/
+**/node_modules/
+
+# Next.js
+.next/
+ui/.next/
+.next/**
+*.log
+
+# Env
+.env
+.env.*
+
+# Vercel local
+.vercel/
+ui/.vercel/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+build/
