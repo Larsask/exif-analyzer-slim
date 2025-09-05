@@ -1,13 +1,13 @@
 {
   "functions": {
     "app/api/upload/route.ts": {
-      "runtime": "nodejs18.x"
+      "runtime": "@vercel/node@3.0.7"
     },
     "app/api/report/[id]/route.ts": {
-      "runtime": "nodejs18.x"
+      "runtime": "@vercel/node@3.0.7"
     },
     "app/api/download/[id]/[asset]/route.ts": {
-      "runtime": "nodejs18.x"
+      "runtime": "@vercel/node@3.0.7"
     }
   }
 }
