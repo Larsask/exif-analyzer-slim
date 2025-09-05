@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "app/api/upload/route.ts": {
+      "runtime": "nodejs18.x"
+    },
+    "app/api/report/[id]/route.ts": {
+      "runtime": "nodejs18.x"
+    },
+    "app/api/download/[id]/[asset]/route.ts": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}
